@@ -18,12 +18,10 @@ export class AuthService {
 
   login(user: User) {
     return this.getAllUsers().subscribe((data) => {
-      console.log(data);
       data.find((dbUser: User) => {
-        console.log(dbUser.username && dbUser.password === user.username && user.password);
         return dbUser.username && dbUser.password === user.username && user.password
           ? this.router.navigate(['/main-page'])
-          : null;
+          : new Error('wrong username or password');
       });
     });
   }
