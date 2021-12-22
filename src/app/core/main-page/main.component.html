@@ -1,4 +1,4 @@
-<form class="form" [formGroup]="datesForm" (change)="reload()">
+<form class="form" [formGroup]="datesForm" (change)="loadPagingWrapper()">
   <label for="start-date">
     Start date: <input type="date" name="start-date" formControlName="startDate" />
   </label>
@@ -9,9 +9,9 @@
   <label for="pagination">
     Per page:
     <select formControlName="perPage" name="pagination">
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
     </select>
   </label>
 </form>
@@ -23,5 +23,5 @@
 <app-pagination
   [perPage]="formPerPage.value"
   [totalPages]="totalPagesCount"
-  (currentPage)="pageController($event)"
+  (currentPage)="currentPageController($event)"
 ></app-pagination>

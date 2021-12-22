@@ -7,7 +7,7 @@ import { ApodModel } from 'src/app/shared/models/apod-model';
   styleUrls: ['./apod-card.component.scss'],
 })
 export class ApodCardComponent {
-  @Input() card?: ApodModel;
+  @Input() card: ApodModel = {} as ApodModel;
 
   imgUrl(card: ApodModel = {} as ApodModel): string {
     const regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#&?]*).*/;

@@ -35,31 +35,42 @@ export class MainComponent implements OnInit {
     this.getData(this.currentPageNumber);
   }
 
+  loadPagingWrapper() {
+    this.loadPaging(this.currentPageNumber);
+  }
+
+  currentPageController(currPg: number) {
+    this.loadPaging(currPg);
+  }
+
   getData(pageNo: number) {
     this.currentPageNumber = pageNo;
     this.fetch
       .fetchFakeResults(this.formStartDate.value, this.formEndDate.value)
       .subscribe((response) => {
         this.apodList = response;
-
-        this.setPagination(this.currentPageNumber);
-
-        this.totalPagesCount = this.pager.totalPages;
-
-        this.currentPageResults = this.pageArraySplit(
-          response,
-          this.pager.currentPage,
-          this.pager.pageSize,
-        );
-
-        console.log();
+        this.loadPaging(this.currentPageNumber);
       });
+  }
+
+  loadPaging(pageNo: number) {
+    this.setPagination(pageNo);
+
+    this.totalPagesCount = this.pager.totalPages;
+
+    this.currentPageResults = this.pageArraySplit(
+      this.apodList,
+      this.pager.currentPage,
+      this.pager.pageSize,
+    );
+
+    console.log(this.currentPageResults);
   }
 
   setPagination(pageNo: number) {
     pageNo = Number(pageNo);
     this.currentPageNumber = pageNo;
-    this.pager = this.pagerService.getPager(this.apodList.length, pageNo, this.formPerPage.value);
+    this.pager = this.pagerService.getPager(this.apodList.length, pageNo, +this.formPerPage.value);
   }
 
   pageArraySplit(array: ApodModel[], pageNo: number, perPage: number) {
@@ -71,12 +82,8 @@ export class MainComponent implements OnInit {
   datesForm = this.fb.group({
     startDate: ['2021-12-15'],
     endDate: [TODAYS_DATE],
-    perPage: [2],
+    perPage: [5],
   });
-
-  pageController(currPg: number) {
-    this.getData(currPg);
-  }
 
   get formStartDate(): FormGroup {
     return this.datesForm.get('startDate') as FormGroup;

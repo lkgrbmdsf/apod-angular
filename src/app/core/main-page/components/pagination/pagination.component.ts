@@ -15,10 +15,12 @@ export class PaginationComponent {
   @Output() currentPage = new EventEmitter();
 
   nextPage() {
-    this.currentPage.emit(++this.currentPageNumber);
+    this.currentPageNumber += 1;
+    this.currentPage.emit(this.currentPageNumber);
   }
 
   prevPage() {
-    this.currentPage.emit(--this.currentPageNumber);
+    this.currentPageNumber -= 1;
+    this.currentPage.emit(this.currentPageNumber);
   }
 }
