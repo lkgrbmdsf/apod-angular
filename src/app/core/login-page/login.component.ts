@@ -40,4 +40,9 @@ export class LoginComponent {
     this.user = this.authForm.value;
     this.auth.login(this.user);
   }
+
+  clearInputs() {
+    this.formPassword.setValue(['']);
+    this.formUsername.setValue(['']);
+  }
 }

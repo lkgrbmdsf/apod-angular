@@ -21,7 +21,7 @@ export class AuthService {
       data.find((dbUser: User) => {
         return dbUser.username && dbUser.password === user.username && user.password
           ? this.router.navigate(['/main-page'])
-          : new Error('wrong username or password');
+          : console.log('wrong username or password');
       });
     });
   }

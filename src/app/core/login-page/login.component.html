@@ -22,7 +22,7 @@
 
   <div class="register">
     <p *ngIf="isLogin">New to the service?</p>
-    <p class="create-acc" (click)="isLogin = !isLogin">
+    <p class="create-acc" (click)="isLogin = !isLogin; clearInputs()">
       {{ isLogin ? 'Create an account' : 'Back to login' }}
     </p>
   </div>
