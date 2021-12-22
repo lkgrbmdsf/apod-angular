@@ -1,0 +1,5 @@
+<div class="card">
+  <p class="title">{{ card?.title }}</p>
+  <img [src]="imgUrl(card)" alt="apod" />
+  <p class="date">Captured on {{ card?.date | date: 'mediumDate' }}</p>
+</div>

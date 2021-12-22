@@ -1,0 +1,9 @@
+<p>per page: {{ perPage }}</p>
+<p>total pages: {{ totalPages }}</p>
+<p>current page: {{ currentPageNumber }}</p>
+
+<button (click)="prevPage()" type="button" [disabled]="currentPageNumber === 1">prev page</button>
+
+<button (click)="nextPage()" type="button" [disabled]="currentPageNumber + 1 > totalPages">
+  next page
+</button>

@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.apod-card {
+  margin: 20px 10%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  justify-items: center;
+}
+
+.form {
+  margin: 20px 10%;
+
+  label {
+    padding-left: 20px;
+  }
+}

@@ -1,0 +1,27 @@
+<form class="form" [formGroup]="datesForm" (change)="reload()">
+  <label for="start-date">
+    Start date: <input type="date" name="start-date" formControlName="startDate" />
+  </label>
+  <label for="end-date">
+    End date <input type="date" name="end-date" formControlName="endDate"
+  /></label>
+
+  <label for="pagination">
+    Per page:
+    <select formControlName="perPage" name="pagination">
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+    </select>
+  </label>
+</form>
+
+<div class="apod-card">
+  <app-apod-card *ngFor="let card of currentPageResults" [card]="card"></app-apod-card>
+</div>
+
+<app-pagination
+  [perPage]="formPerPage.value"
+  [totalPages]="totalPagesCount"
+  (currentPage)="pageController($event)"
+></app-pagination>
