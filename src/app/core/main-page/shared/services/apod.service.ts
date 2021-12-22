@@ -12,7 +12,6 @@ export class ApodService {
 
   fetchFakeResults(startDate?: string, endDate?: string): Observable<ApodModel[]> {
     const response = this.httpClient.get<ApodModel[]>(DEMO_URL);
-    console.log('dates:', `{start: ${startDate}, end: ${endDate}}`);
     return response;
   }
 
@@ -20,7 +19,6 @@ export class ApodService {
     const response = this.httpClient.get<ApodModel[]>(
       URL + `start_date=${startDate}&end_date=${endDate}`,
     );
-    console.log(startDate, endDate);
     return response;
   }
 }

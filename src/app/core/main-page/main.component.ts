@@ -63,8 +63,6 @@ export class MainComponent implements OnInit {
       this.pager.currentPage,
       this.pager.pageSize,
     );
-
-    console.log(this.currentPageResults);
   }
 
   setPagination(pageNo: number) {

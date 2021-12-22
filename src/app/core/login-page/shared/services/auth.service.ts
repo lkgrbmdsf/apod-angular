@@ -3,21 +3,29 @@ import { HttpClient } from '@angular/common/http';
 import { DB_URL } from '../constants/constant-urls';
 import { User } from '../models/login-model';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   register(user: User): Observable<any> {
     user.id = Date.now();
-
     return this.http.post(DB_URL + 'users', user);
   }
 
   login(user: User) {
-    console.log(user);
+    return this.getAllUsers().subscribe((data) => {
+      console.log(data);
+      data.find((dbUser: User) => {
+        console.log(dbUser.username && dbUser.password === user.username && user.password);
+        return dbUser.username && dbUser.password === user.username && user.password
+          ? this.router.navigate(['/main-page'])
+          : null;
+      });
+    });
   }
 
   getAllUsers(): Observable<User[]> {

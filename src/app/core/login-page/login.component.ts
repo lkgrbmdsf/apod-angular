@@ -14,8 +14,6 @@ export class LoginComponent {
 
   user: User = {} as User;
 
-  loginErrorMessage: string = '';
-
   authForm = this.fb.group({
     username: ['', Validators.required],
     password: ['', Validators.required],
@@ -40,14 +38,6 @@ export class LoginComponent {
 
   login() {
     this.user = this.authForm.value;
-    return this.auth
-      .getAllUsers()
-      .subscribe((data) =>
-        data.find((dbUser) =>
-          dbUser.username && dbUser.password === this.user.username && this.user.password
-            ? this.router.navigate(['/main-page'])
-            : (this.loginErrorMessage = 'wrong username or password'),
-        ),
-      );
+    this.auth.login(this.user);
   }
 }
