@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { TODAYS_DATE } from 'src/app/shared/constants/const-values';
-import { ApodModel } from 'src/app/shared/models/apod-model';
-import { ApodService } from 'src/app/shared/services/apod.service';
-import { PagerService } from 'src/app/shared/services/pager.service';
+import { TODAYS_DATE } from 'src/app/core/main-page/shared/constants/const-values';
+import { ApodModel } from 'src/app/core/main-page/shared/models/apod-model';
+import { ApodService } from 'src/app/core/main-page/shared/services/apod.service';
+import { PagerService } from 'src/app/core/main-page/shared/services/pager.service';
 
 @Component({
   selector: 'app-main',

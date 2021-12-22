@@ -1,0 +1,31 @@
+<div class="login-field">
+  <h2>Hi there!</h2>
+  <h4>Please, {{ isLogin ? 'login' : 'register' }} to use the service.</h4>
+
+  <form class="form" [formGroup]="authForm">
+    <label for="login">
+      {{ isLogin ? 'Enter' : 'Choose' }} username
+      <input autocomplete="off" type="text" name="login" formControlName="username" />
+    </label>
+    <label for="password">
+      {{ isLogin ? 'Enter' : 'Choose' }} password
+      <input autocomplete="off" type="password" name="password" formControlName="password" />
+    </label>
+  </form>
+
+  <button type="button" [disabled]="!authForm.valid" (click)="isLogin ? login() : register()">
+    submit
+  </button>
+
+  <ng-container *ngIf="loginErrorMessage"> {{ loginErrorMessage }} </ng-container>
+
+  <!--     [routerLink]="['/main-page']"
+ -->
+
+  <div class="register">
+    <p *ngIf="isLogin">New to the service?</p>
+    <p class="create-acc" (click)="isLogin = !isLogin">
+      {{ isLogin ? 'Create an account' : 'Back to login' }}
+    </p>
+  </div>
+</div>

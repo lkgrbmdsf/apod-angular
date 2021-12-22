@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApodModel } from '../models/apod-model';
 import { Observable } from 'rxjs';
-import { DEMO_URL, URL } from '../constants/const-values';
+import { ApodModel } from '../models/apod-model';
+import { URL, DEMO_URL } from '../constants/const-values';
 
 @Injectable({
   providedIn: 'root',

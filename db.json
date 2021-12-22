@@ -1,0 +1,34 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "test",
+      "password": "test"
+    },
+    {
+      "username": "dfgdf",
+      "password": "dfgdf",
+      "id": 1640199834002
+    },
+    {
+      "username": "user3",
+      "password": "user3",
+      "id": 1640200075978
+    },
+    {
+      "username": "user4",
+      "password": "user4",
+      "id": 1640200143490
+    },
+    {
+      "username": "fer",
+      "password": "fer",
+      "id": 1640202222217
+    },
+    {
+      "username": "rrr",
+      "password": "rrr",
+      "id": 1640202367808
+    }
+  ]
+}
