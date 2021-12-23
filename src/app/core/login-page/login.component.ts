@@ -52,7 +52,7 @@ export class LoginComponent {
       .subscribe((data) => {
         if (data) {
           this.auth.login(this.user as User);
-          return this.router.navigate(['/main-page']);
+          return this.router.navigate(['/apod']);
         } else {
           this.loginErrorMsg = 'user doesnt exist';
           return this.loginErrorMsg;
