@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from './shared/models/login-model';
 import { AuthService } from './shared/services/auth.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,8 @@ export class LoginComponent {
   isLogin: boolean = true;
 
   user: User = {} as User;
+
+  loginErrorMsg: string = '';
 
   authForm = this.fb.group({
     username: ['', Validators.required],
@@ -31,18 +34,34 @@ export class LoginComponent {
 
   register() {
     this.user = this.authForm.value;
-    this.auth
-      .register(this.user as User)
-      .subscribe({ next: () => this.router.navigate(['/main-page']) });
+    this.auth.register(this.user as User).subscribe();
   }
 
   login() {
     this.user = this.authForm.value;
-    this.auth.login(this.user);
+
+    this.auth
+      .getAllUsers()
+      .pipe(
+        map((data) =>
+          data.find(
+            (user) => user.username && user.password === this.user.username && this.user.password,
+          ),
+        ),
+      )
+      .subscribe((data) => {
+        if (data) {
+          this.auth.login(this.user as User);
+          return this.router.navigate(['/main-page']);
+        } else {
+          this.loginErrorMsg = 'user doesnt exist';
+          return this.loginErrorMsg;
+        }
+      });
   }
 
-  clearInputs() {
-    this.formPassword.setValue(['']);
-    this.formUsername.setValue(['']);
+  clearFields() {
+    this.authForm.setValue({ username: [''], password: [''] });
+    this.loginErrorMsg = '';
   }
 }

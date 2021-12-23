@@ -13,16 +13,15 @@
     </label>
   </form>
 
+  <div *ngIf="loginErrorMsg" class="error-msg">user is not exist</div>
+
   <button type="button" [disabled]="!authForm.valid" (click)="isLogin ? login() : register()">
     submit
   </button>
 
-  <!--     [routerLink]="['/main-page']"
- -->
-
   <div class="register">
     <p *ngIf="isLogin">New to the service?</p>
-    <p class="create-acc" (click)="isLogin = !isLogin; clearInputs()">
+    <p class="create-acc" (click)="isLogin = !isLogin; clearFields()">
       {{ isLogin ? 'Create an account' : 'Back to login' }}
     </p>
   </div>

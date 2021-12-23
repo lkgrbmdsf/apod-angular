@@ -9,24 +9,30 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
+  usersList: User[] = [];
+
   constructor(private http: HttpClient, private router: Router) {}
 
   register(user: User): Observable<any> {
-    user.id = Date.now();
     return this.http.post(DB_URL + 'users', user);
   }
 
   login(user: User) {
-    return this.getAllUsers().subscribe((data) => {
-      data.find((dbUser: User) => {
-        return dbUser.username && dbUser.password === user.username && user.password
-          ? this.router.navigate(['/main-page'])
-          : console.log('wrong username or password');
-      });
-    });
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    // let currentUser;
+    // return this.getAllUsers().pipe(
+    //   map((data) => {
+    //     currentUser = data.find((user) => user.password === password && user.username === username);
+    //     // localStorage.setItem('currentUser', JSON.stringify(currentUser));
+    //   }),
+    // );
   }
 
-  getAllUsers(): Observable<User[]> {
+  logout() {
+    localStorage.removeItem('currentUser');
+  }
+
+  getAllUsers() {
     return this.http.get<User[]>(DB_URL + 'users');
   }
 }

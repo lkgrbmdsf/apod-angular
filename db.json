@@ -6,74 +6,19 @@
       "password": "test"
     },
     {
-      "username": "dfgdf",
-      "password": "dfgdf",
-      "id": 1640199834002
+      "id": 2,
+      "username": "test2",
+      "password": "test2"
     },
     {
-      "username": "user3",
-      "password": "user3",
-      "id": 1640200075978
+      "id": 3,
+      "username": "test3",
+      "password": "test3"
     },
     {
-      "username": "user4",
-      "password": "user4",
-      "id": 1640200143490
-    },
-    {
-      "username": "fer",
-      "password": "fer",
-      "id": 1640202222217
-    },
-    {
-      "username": "rrr",
-      "password": "rrr",
-      "id": 1640202367808
-    },
-    {
-      "username": "fer",
-      "password": "fer",
-      "id": 1640202367809
-    },
-    {
-      "username": "fer",
-      "password": "fer",
-      "id": 1640202367810
-    },
-    {
-      "username": "fer",
-      "password": "fer",
-      "id": 1640202367811
-    },
-    {
-      "username": "fer",
-      "password": "fer",
-      "id": 1640202367812
-    },
-    {
-      "username": "fer",
-      "password": "fer",
-      "id": 1640202367813
-    },
-    {
-      "username": "fer",
-      "password": "fer",
-      "id": 1640202367814
-    },
-    {
-      "username": "fer",
-      "password": "fer",
-      "id": 1640202367815
-    },
-    {
-      "username": "афс",
-      "password": "афс",
-      "id": 1640206858803
-    },
-    {
-      "username": "regis",
-      "password": "regis",
-      "id": 1640208301302
+      "username": "ref",
+      "password": "ref",
+      "id": 4
     }
   ]
 }
