@@ -42,13 +42,7 @@ export class LoginComponent {
 
     this.auth
       .getAllUsers()
-      .pipe(
-        map((data) =>
-          data.find(
-            (user) => user.username && user.password === this.user.username && this.user.password,
-          ),
-        ),
-      )
+      .pipe(map((data) => data.find((user) => user.username === this.user.username)))
       .subscribe((data) => {
         if (data) {
           this.auth.login(this.user as User);

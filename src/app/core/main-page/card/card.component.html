@@ -1,1 +1,11 @@
-<p>works</p>
+<div class="card">
+  <iframe
+    class="media"
+    *ngIf="card.media_type === 'video'; else elseBlock"
+    [src]="card.url | safe"
+  ></iframe>
+
+  <ng-template #elseBlock class="media">
+    <img [src]="card.url" alt="apod" />
+  </ng-template>
+</div>
