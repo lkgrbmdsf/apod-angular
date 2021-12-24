@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { ApodModel } from '../models/apod-model';
 import { URL, DEMO_URL } from '../constants/const-values';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -20,5 +21,9 @@ export class ApodService {
       URL + `start_date=${startDate}&end_date=${endDate}`,
     );
     return response;
+  }
+
+  getCardByDate(date: string) {
+    return this.fetchFakeResults().pipe(map((data) => data.find((card) => card.date === date)));
   }
 }

@@ -17,7 +17,7 @@
 </form>
 
 <div class="apod-card">
-  <app-apod-card *ngFor="let card of currentPageResults" [card]="card"></app-apod-card>
+  <app-apod-card-list *ngFor="let card of currentPageResults" [card]="card"> </app-apod-card-list>
 </div>
 
 <app-pagination
@@ -25,3 +25,5 @@
   [totalPages]="totalPagesCount"
   (currentPage)="currentPageController($event)"
 ></app-pagination>
+
+<router-outlet></router-outlet>

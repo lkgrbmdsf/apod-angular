@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { TODAYS_DATE } from 'src/app/core/main-page/shared/constants/const-values';
 import { ApodModel } from 'src/app/core/main-page/shared/models/apod-model';
 import { ApodService } from 'src/app/core/main-page/shared/services/apod.service';
@@ -25,6 +26,7 @@ export class MainComponent implements OnInit {
     private fetch: ApodService,
     private fb: FormBuilder,
     private pagerService: PagerService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
@@ -93,5 +95,11 @@ export class MainComponent implements OnInit {
 
   get formPerPage(): FormGroup {
     return this.datesForm.get('perPage') as FormGroup;
+  }
+
+  navigateTo(date: string) {
+    console.log(this.router.navigate([date]));
+
+    this.router.navigate(['/apod', date]);
   }
 }
