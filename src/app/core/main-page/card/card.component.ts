@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApodModel } from '../shared/models/apod-model';
 import { ApodService } from '../shared/services/apod.service';
-// import { ApodModel } from '../shared/models/apod-model';
 
 @Component({
   selector: 'app-card',
@@ -14,11 +13,19 @@ export class CardComponent implements OnInit {
 
   card: ApodModel = {} as ApodModel;
 
-  constructor(private route: ActivatedRoute, private apod: ApodService) {}
+  @Input() list: ApodModel[] = [];
+
+  constructor(private route: ActivatedRoute, private router: Router, private apod: ApodService) {}
 
   ngOnInit(): void {
     this.cardDate = this.route.snapshot.params.date;
 
     this.apod.getCardByDate(this.cardDate).subscribe((res) => (this.card = res!));
+
+    console.log(this.list);
+  }
+
+  goBack() {
+    this.router.navigate(['/apod']);
   }
 }

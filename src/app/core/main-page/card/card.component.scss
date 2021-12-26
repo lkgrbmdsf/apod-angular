@@ -1,0 +1,42 @@
+:host {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  height: auto;
+
+  width: 80%;
+
+  margin-top: 5vw;
+
+  img {
+    width: 40%;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .top-block,
+    .bottom-block {
+      justify-content: center;
+    }
+
+    .bottom-block {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  button {
+    display: flex;
+    height: 40px;
+    width: 35px;
+  }
+}

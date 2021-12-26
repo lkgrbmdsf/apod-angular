@@ -48,7 +48,7 @@ export class MainComponent implements OnInit {
   getData(pageNo: number) {
     this.currentPageNumber = pageNo;
     this.fetch
-      .fetchFakeResults(this.formStartDate.value, this.formEndDate.value)
+      .fetchResults(this.formStartDate.value, this.formEndDate.value)
       .subscribe((response) => {
         this.apodList = response;
         this.loadPaging(this.currentPageNumber);
