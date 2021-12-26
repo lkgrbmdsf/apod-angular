@@ -11,6 +11,8 @@ import { ApodService } from '../shared/services/apod.service';
 export class CardComponent implements OnInit {
   cardDate: string = '';
 
+  isLoading: boolean = false;
+
   card: ApodModel = {} as ApodModel;
 
   @Input() list: ApodModel[] = [];
@@ -18,11 +20,13 @@ export class CardComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private apod: ApodService) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.cardDate = this.route.snapshot.params.date;
 
-    this.apod.getCardByDate(this.cardDate).subscribe((res) => (this.card = res!));
-
-    console.log(this.list);
+    this.apod.getCardByDate(this.cardDate).subscribe((res) => {
+      this.isLoading = false;
+      this.card = res!;
+    });
   }
 
   goBack() {

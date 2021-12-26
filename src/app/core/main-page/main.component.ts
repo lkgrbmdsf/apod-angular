@@ -18,6 +18,8 @@ export class MainComponent implements OnInit {
 
   currentPageNumber: number = 1;
 
+  isLoading: boolean = false;
+
   currentPageResults: ApodModel[] = [];
 
   pager: any = {};
@@ -30,6 +32,7 @@ export class MainComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading = true;
     this.reload();
   }
 
@@ -52,6 +55,7 @@ export class MainComponent implements OnInit {
       .subscribe((response) => {
         this.apodList = response;
         this.loadPaging(this.currentPageNumber);
+        this.isLoading = false;
       });
   }
 

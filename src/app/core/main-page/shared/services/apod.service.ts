@@ -15,11 +15,6 @@ export class ApodService {
 
   constructor(private httpClient: HttpClient) {}
 
-  // fetchFakeResults(startDate?: string, endDate?: string): Observable<ApodModel[]> {
-  //   const response = this.httpClient.get<ApodModel[]>(DB_URL + 'fakeDB');
-  //   return response;
-  // }
-
   fetchResults(startDate: string, endDate: string): Observable<ApodModel[]> {
     this.startDate = startDate;
     this.endDate = endDate;

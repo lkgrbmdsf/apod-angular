@@ -1,25 +1,29 @@
-<div class="card">
-  <iframe
-    class="media"
-    *ngIf="card.media_type === 'video'; else elseBlock"
-    [src]="card.url | safe"
-  ></iframe>
+<app-spinner class="loader" *ngIf="isLoading; else elseBlock"></app-spinner>
 
-  <ng-template #elseBlock class="media">
-    <img [src]="card.url" alt="apod" />
-  </ng-template>
+<ng-template #elseBlock>
+  <div class="card">
+    <iframe
+      class="media"
+      *ngIf="card.media_type === 'video'; else elseBlock"
+      [src]="card.url | safe"
+    ></iframe>
 
-  <div class="info">
-    <div class="top-block">
-      <p>{{ card.title }}</p>
-      <p>{{ card.explanation ? card.explanation : '' }}</p>
+    <ng-template #elseBlock class="media">
+      <img [src]="card.url" alt="apod" />
+    </ng-template>
+
+    <div class="info">
+      <div class="top-block">
+        <p>{{ card.title }}</p>
+        <p>{{ card.explanation ? card.explanation : '' }}</p>
+      </div>
+
+      <div class="bottom-block">
+        <p>{{ card.copyright ? card.copyright : '' }}</p>
+        <p>{{ cardDate | date: 'mediumDate' }}</p>
+      </div>
     </div>
 
-    <div class="bottom-block">
-      <p>{{ card.copyright ? card.copyright : '' }}</p>
-      <p>{{ cardDate | date: 'mediumDate' }}</p>
-    </div>
+    <button type="button" (click)="goBack()">go back</button>
   </div>
-
-  <button type="button" (click)="goBack()">go back</button>
-</div>
+</ng-template>
