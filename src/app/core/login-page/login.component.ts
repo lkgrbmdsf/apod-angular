@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from './shared/models/login-model';
 import { AuthService } from './shared/services/auth.service';
@@ -18,8 +18,8 @@ export class LoginComponent {
   loginErrorMsg: string = '';
 
   authForm = this.fb.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required],
+    username: ['', [Validators.required, this.usernameValidator()]],
+    password: ['', [Validators.required, this.passwordValidator()]],
   });
 
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {}
@@ -32,9 +32,33 @@ export class LoginComponent {
     return this.authForm.get('password') as FormGroup;
   }
 
+  usernameValidator(): null | Object {
+    return (control: FormControl): ValidationErrors | null => {
+      const input = control.value.split(' ').filter((str: string) => str.length > 0);
+      const inputAsWord = input.join();
+      return input.length === 1 && inputAsWord.length > 4 && inputAsWord.length < 12
+        ? null
+        : { length: 'should contain only one word less than 12 chars' };
+    };
+  }
+
+  passwordValidator(): null | Object {
+    return (control: FormControl): ValidationErrors | null => {
+      const regEx = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+      const accepted = control.value.match(regEx);
+      return accepted
+        ? null
+        : {
+            passmatch:
+              'should contain at least one numeric digit, one uppercase and one lowercase letter',
+          };
+    };
+  }
+
   register() {
     this.user = this.authForm.value;
     this.auth.register(this.user as User).subscribe();
+    this.isLogin = !this.isLogin;
   }
 
   login() {

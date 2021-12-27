@@ -7,15 +7,32 @@
       {{ isLogin ? 'Enter' : 'Choose' }} username
       <input autocomplete="off" type="text" name="login" formControlName="username" />
     </label>
+
+    <div class="errors" *ngIf="!isLogin && formUsername.invalid && formUsername.dirty">
+      {{
+        formUsername.hasError('required')
+          ? 'field shouldn be empty'
+          : formUsername.getError('length')
+      }}
+    </div>
+
     <label for="password">
       {{ isLogin ? 'Enter' : 'Choose' }} password
       <input autocomplete="off" type="password" name="password" formControlName="password" />
     </label>
+
+    <div class="errors" *ngIf="!isLogin && formPassword.invalid && formPassword.dirty">
+      {{
+        formUsername.hasError('required')
+          ? 'field shouldn be empty'
+          : formPassword.getError('passmatch')
+      }}
+    </div>
   </form>
 
   <div *ngIf="loginErrorMsg" class="error-msg">user is not exist</div>
 
-  <button type="button" [disabled]="!authForm.valid" (click)="isLogin ? login() : register()">
+  <button type="button" [disabled]="authForm.invalid" (click)="isLogin ? login() : register()">
     submit
   </button>
 
