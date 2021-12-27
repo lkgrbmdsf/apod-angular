@@ -8,6 +8,8 @@
   display: flex;
   justify-content: center;
   height: auto;
+  background-color: white;
+  box-shadow: -4px 7px 12px -6px rgba(34, 60, 80, 0.29);
 
   width: 80%;
 
@@ -37,7 +39,37 @@
   button {
     display: flex;
     height: 40px;
-    width: 35px;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    padding: 20px;
+    background-color: white;
+    font-size: 30px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: rgba(34, 60, 80, 0.29);
+      transition: background-color 1s;
+    }
+  }
+}
+
+@media (max-aspect-ratio: 4/3) {
+  .card {
+    display: flex;
+    flex-direction: column;
+
+    img,
+    iframe {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    iframe {
+      height: 300px;
+    }
   }
 }
 

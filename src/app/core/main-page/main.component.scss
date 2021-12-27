@@ -61,3 +61,24 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-aspect-ratio: 4/3) {
+  .apod-card {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0.5rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 40vw;
+
+    label {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}
