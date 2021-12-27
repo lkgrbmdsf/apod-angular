@@ -1,10 +1,24 @@
 <form class="form" [formGroup]="datesForm">
   <label for="start-date">
     Start date:
-    <input type="date" name="start-date" formControlName="startDate" (change)="reload()" />
+    <input
+      type="date"
+      name="start-date"
+      formControlName="startDate"
+      [min]="firstApodDate"
+      [max]="formEndDate.value"
+      (change)="reload()"
+    />
   </label>
   <label for="end-date">
-    End date <input type="date" name="end-date" formControlName="endDate" (change)="reload()"
+    End date
+    <input
+      type="date"
+      name="end-date"
+      formControlName="endDate"
+      [min]="formStartDate.value"
+      [max]="todaysDate"
+      (change)="reload()"
   /></label>
 
   <label for="pagination">

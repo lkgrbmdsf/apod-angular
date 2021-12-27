@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { TODAYS_DATE } from 'src/app/core/main-page/shared/constants/const-values';
+import { FIRST_APOD_DATE, TODAYS_DATE } from 'src/app/core/main-page/shared/constants/const-values';
 import { ApodModel } from 'src/app/core/main-page/shared/models/apod-model';
 import { ApodService } from 'src/app/core/main-page/shared/services/apod.service';
 import { PagerService } from 'src/app/core/main-page/shared/services/pager.service';
@@ -19,6 +19,10 @@ export class MainComponent implements OnInit {
   currentPageNumber: number = 1;
 
   isLoading: boolean = false;
+
+  firstApodDate: string = FIRST_APOD_DATE;
+
+  todaysDate: string = TODAYS_DATE;
 
   currentPageResults: ApodModel[] = [];
 
@@ -85,7 +89,7 @@ export class MainComponent implements OnInit {
 
   datesForm = this.fb.group({
     startDate: ['2021-12-15'],
-    endDate: [TODAYS_DATE],
+    endDate: [this.todaysDate],
     perPage: [5],
   });
 

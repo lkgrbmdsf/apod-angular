@@ -4,3 +4,5 @@ export const URL =
 export const DEMO_URL = '../../../../assets/temp/data.json';
 
 export const TODAYS_DATE = new Date().toISOString().substring(0, 10);
+
+export const FIRST_APOD_DATE = '1995-06-16';

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApodModel } from '../shared/models/apod-model';
 import { ApodService } from '../shared/services/apod.service';
@@ -14,8 +14,6 @@ export class CardComponent implements OnInit {
   isLoading: boolean = false;
 
   card: ApodModel = {} as ApodModel;
-
-  @Input() list: ApodModel[] = [];
 
   constructor(private route: ActivatedRoute, private router: Router, private apod: ApodService) {}
 
