@@ -1,0 +1,46 @@
+<form class="form" [formGroup]="datesForm">
+  <label for="start-date">
+    Start date:
+    <input
+      type="date"
+      name="start-date"
+      formControlName="startDate"
+      [min]="firstApodDate"
+      [max]="formEndDate.value"
+      (change)="reload()"
+    />
+  </label>
+  <label for="end-date">
+    End date
+    <input
+      type="date"
+      name="end-date"
+      formControlName="endDate"
+      [min]="formStartDate.value"
+      [max]="todaysDate"
+      (change)="reload()"
+  /></label>
+
+  <label for="pagination">
+    Per page:
+    <select formControlName="perPage" name="pagination" (change)="loadPagingWrapper()">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+    </select>
+  </label>
+</form>
+
+<app-spinner class="loader" *ngIf="isLoading; else elseBlock">spinner</app-spinner>
+
+<ng-template #elseBlock>
+  <div class="apod-card">
+    <app-apod-card-list *ngFor="let card of currentPageResults" [card]="card"> </app-apod-card-list>
+  </div>
+</ng-template>
+
+<app-pagination
+  [perPage]="formPerPage.value"
+  [totalPages]="totalPagesCount"
+  (currentPage)="currentPageController($event)"
+></app-pagination>
