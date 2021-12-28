@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from './shared/models/login-model';
@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   isLogin: boolean = true;
 
   user: User = {} as User;
@@ -23,6 +23,12 @@ export class LoginComponent {
   });
 
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {}
+
+  ngOnInit(): void {
+    if (localStorage.length) {
+      this.router.navigate(['/apod']);
+    }
+  }
 
   get formUsername() {
     return this.authForm.get('username') as FormGroup;
