@@ -41,6 +41,7 @@ export class MainComponent implements OnInit {
   }
 
   reload() {
+    this.isLoading = true;
     this.getData(this.currentPageNumber);
   }
 
