@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'login-page', component: LoginComponent },
   { path: 'apod', component: MainComponent, canActivate: [AuthGuard] },
   { path: 'apod/:date', component: CardComponent },
+  { path: '**', redirectTo: '/apod' },
 ];
 
 @NgModule({
@@ -19,6 +20,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule {}
 
-//TODO: make one shared folder with module
-//TODO: make services provide in exact component
 //TODO: make redirect not in guard but in routing
