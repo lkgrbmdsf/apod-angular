@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApodModel } from '../shared/models/apod-model';
-import { ApodService } from '../shared/services/apod.service';
+import { ApodModel } from '../../../shared/models/apod-model';
+import { ApodService } from '../../../shared/services/apod.service';
 
 @Component({
   selector: 'app-card',

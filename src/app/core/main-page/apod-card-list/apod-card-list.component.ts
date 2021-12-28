@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApodModel } from 'src/app/core/main-page/shared/models/apod-model';
+import { ApodModel } from 'src/app/shared/models/apod-model';
 
 @Component({
   selector: 'app-apod-card-list',

@@ -5,9 +5,7 @@ import { ApodModel } from '../models/apod-model';
 import { URL } from '../constants/const-values';
 import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ApodService {
   startDate: string = '';
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from './shared/models/login-model';
-import { AuthService } from './shared/services/auth.service';
+import { User } from '../../shared/models/login-model';
+import { AuthService } from '../../shared/services/auth.service';
 import { map } from 'rxjs/operators';
 
 @Component({

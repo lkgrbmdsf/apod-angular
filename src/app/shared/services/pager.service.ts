@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class PagerService {
   getPager(totalItems: number, currentPage: number = 1, pageSize: number = 10) {
     let totalPages = Math.ceil(totalItems / pageSize);
