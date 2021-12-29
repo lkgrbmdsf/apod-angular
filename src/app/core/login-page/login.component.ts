@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {}
 
   ngOnInit(): void {
-    if (localStorage.length) {
+    if (localStorage.getItem('currentUser')) {
       this.router.navigate(['/apod']);
     }
   }
